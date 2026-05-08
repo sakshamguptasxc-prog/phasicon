@@ -1,0 +1,2075 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phasicon - Your Entire Health. One Living System.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @font-face {
+            font-family: 'IvyJournal';
+            src: url('assets/IvyJournal-Thin.woff2') format('woff2');
+            font-weight: 300;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Apercu';
+            src: url('assets/Apercu-Light.woff2') format('woff2');
+            font-weight: 300;
+            font-style: normal;
+        }
+
+        :root {
+            --cream: #F4F2ED;
+            --pale-sage: #B8C4B8;
+            --earth-green: #4E5E54;
+            --charcoal: #3A3F3B;
+            --ink: #1a1a18;
+            --gray: #8E8E8E;
+            --dark-bg: #0f1412;
+            --serif: 'IvyJournal', 'EB Garamond', serif;
+            --sans: 'Apercu', 'Inter', sans-serif;
+        }
+
+        body {
+            font-family: var(--serif);
+            background: var(--cream);
+            color: var(--charcoal);
+            overflow-x: hidden;
+            margin: 0;
+        }
+
+        /* ========== HERO SECTION ========== */
+        .hero {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, #f0ede6 0%, #e8e4db 38%, #d4d8cc 58%, #b8c4b0 75%, #8fa896 88%, #5a7a62 100%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 680 580" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><ellipse cx="500" cy="260" rx="180" ry="300" fill="none" stroke="%235a7a62" stroke-width="0.6" opacity="0.35"/><ellipse cx="560" cy="180" rx="120" ry="210" fill="none" stroke="%234d6661" stroke-width="0.5" transform="rotate(-15 560 180)" opacity="0.3"/><ellipse cx="440" cy="350" rx="90" ry="160" fill="none" stroke="%236a8a6a" stroke-width="0.4" transform="rotate(10 440 350)" opacity="0.28"/><path d="M 380 -20 Q 430 80 415 240 Q 400 400 440 540" fill="none" stroke="%235a7a62" stroke-width="1.4" opacity="0.4"/><path d="M 415 -10 Q 470 90 455 250 Q 440 410 480 545" fill="none" stroke="%234d6661" stroke-width="0.9" opacity="0.35"/><path d="M 460 0 Q 510 100 500 270 Q 490 440 525 575" fill="none" stroke="%236a8a6a" stroke-width="0.7" opacity="0.3"/><path d="M 350 10 Q 390 120 372 280 Q 354 440 380 575" fill="none" stroke="%233a5a42" stroke-width="0.6" opacity="0.25"/><path d="M 530 -10 Q 575 110 562 270 Q 549 430 590 570" fill="none" stroke="%234d6661" stroke-width="0.5" opacity="0.22"/><path d="M 600 20 Q 640 140 628 290 Q 616 440 650 570" fill="none" stroke="%235a7a62" stroke-width="0.6" opacity="0.28"/><path d="M 420 200 Q 480 180 500 230 Q 520 280 480 310 Q 440 340 400 300 Q 360 260 420 200 Z" fill="none" stroke="%235a7a62" stroke-width="0.7" opacity="0.3"/><path d="M 435 210 Q 475 195 490 235 Q 505 275 475 300 Q 445 325 415 295 Q 385 265 435 210 Z" fill="none" stroke="%234d6661" stroke-width="0.5" opacity="0.25"/></svg>');
+            background-size: cover;
+            background-position: center;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .logo-container {
+            padding: 40px 40px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo-icon {
+            width: 28px;
+            height: 28px;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .logo-wordmark {
+            font-size: 18px;
+            font-weight: 300;
+            color: var(--charcoal);
+            margin: 0;
+            line-height: 1;
+        }
+
+        .logo-tagline {
+            font-size: 9px;
+            font-weight: 300;
+            letter-spacing: 1.5px;
+            color: var(--gray);
+            font-family: var(--sans);
+            text-transform: lowercase;
+        }
+
+        .hero-content {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding: 0 60px 80px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-left {
+            max-width: 600px;
+        }
+
+        .eyebrow {
+            font-family: var(--sans);
+            font-size: 11px;
+            font-weight: 300;
+            letter-spacing: 1px;
+            color: var(--gray);
+            margin-bottom: 24px;
+            text-transform: lowercase;
+        }
+
+        .divider {
+            width: 40px;
+            height: 1px;
+            background: var(--gray);
+            margin-bottom: 48px;
+        }
+
+        h1 {
+            font-size: 84px;
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 48px;
+            color: var(--charcoal);
+        }
+
+        .cta-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .cta-button {
+            background: var(--earth-green);
+            color: var(--cream);
+            border: none;
+            padding: 16px 48px;
+            font-family: var(--sans);
+            font-size: 13px;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: var(--pale-sage);
+            color: var(--charcoal);
+            transform: translateY(-2px);
+        }
+
+        .subtext {
+            font-family: var(--sans);
+            font-size: 11px;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            color: var(--gray);
+        }
+
+        /* ========== WHAT IS PHASICON SECTION ========== */
+        .what-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 60px;
+            position: relative;
+            background: var(--cream);
+        }
+
+        .what-container {
+            max-width: 1400px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            align-items: center;
+        }
+
+        .left-content {
+            display: flex;
+            flex-direction: column;
+            gap: 48px;
+        }
+
+        .main-title {
+            font-size: clamp(52px, 6vw, 96px);
+            font-weight: 300;
+            line-height: 1.1;
+            letter-spacing: 0.01em;
+            color: var(--ink);
+        }
+
+        .definition {
+            font-size: clamp(22px, 2.5vw, 36px);
+            font-weight: 300;
+            line-height: 1.4;
+            letter-spacing: 0.02em;
+            color: var(--charcoal);
+            border-left: 2px solid var(--pale-sage);
+            padding-left: 32px;
+        }
+
+        .definition em {
+            font-style: italic;
+            color: var(--earth-green);
+        }
+
+        .right-content {
+            display: flex;
+            flex-direction: column;
+            gap: 56px;
+        }
+
+        .info-block {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .info-label {
+            font-family: var(--sans);
+            font-size: 10px;
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            text-transform: lowercase;
+            color: var(--earth-green);
+            opacity: 0.8;
+        }
+
+        .info-title {
+            font-size: 28px;
+            font-weight: 300;
+            line-height: 1.3;
+            letter-spacing: 0.01em;
+            color: var(--ink);
+            margin-bottom: 12px;
+        }
+
+        .info-description {
+            font-family: var(--sans);
+            font-size: 15px;
+            font-weight: 300;
+            line-height: 1.9;
+            letter-spacing: 0.03em;
+            color: var(--charcoal);
+            text-transform: lowercase;
+        }
+
+        .info-divider {
+            width: 60px;
+            height: 1px;
+            background: var(--pale-sage);
+            margin: 24px 0;
+        }
+
+        .key-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(184, 196, 184, 0.3);
+        }
+
+        .stat {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .stat-value {
+            font-size: 42px;
+            font-weight: 300;
+            color: var(--earth-green);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-family: var(--sans);
+            font-size: 11px;
+            font-weight: 300;
+            letter-spacing: 0.1em;
+            text-transform: lowercase;
+            color: var(--charcoal);
+            opacity: 0.7;
+        }
+
+        /* ========== USE CASES / SECTION 7 ========== */
+        .use-cases-section {
+            width: 100%;
+            min-height: 100vh;
+            background-image: url('assets/use-case-bg.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 60px;
+        }
+
+        .use-cases-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(240, 237, 230, 0.15);
+            pointer-events: none;
+        }
+
+        .use-cases-container {
+            max-width: 1400px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+            z-index: 1;
+            position: relative;
+        }
+
+        .header-section {
+            position: sticky;
+            top: 120px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .tab {
+            font-family: var(--sans);
+            font-size: 11px;
+            font-weight: 300;
+            letter-spacing: 0.15em;
+            text-transform: lowercase;
+            color: ##5a5a54;
+            cursor: pointer;
+            padding-bottom: 8px;
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .tab:hover {
+            color: #4E5E54;
+        }
+
+        .tab.active {
+            color: #2a2a26;
+            border-bottom-color: #4E5E54;
+        }
+
+        .content-section {
+            display: flex;
+            flex-direction: column;
+            gap: 48px;
+        }
+
+        .use-case-card {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(20px);
+            border: 0.5px solid rgba(168, 161, 154, 0.3);
+            padding: 48px;
+            border-radius: 8px;
+            display: none;
+            animation: fadeInCard 0.5s ease;
+        }
+
+        .use-case-card.active {
+            display: block;
+        }
+
+        @keyframes fadeInCard {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card-number {
+            font-family: var(--sans);
+            font-size: 72px;
+            font-weight: 300;
+            color: rgba(78, 94, 84, 0.15);
+            line-height: 1;
+            margin-bottom: 24px;
+        }
+
+        .card-label {
+            font-family: var(--sans);
+            font-size: 9px;
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            text-transform: lowercase;
+            color: #6a7a6a;
+            margin-bottom: 16px;
+        }
+
+        .card-title {
+            font-size: 42px;
+            font-weight: 300;
+            line-height: 1.2;
+            letter-spacing: 0.01em;
+            color: #1a1a18;
+            margin-bottom: 24px;
+        }
+
+        .card-subtitle {
+            font-style: italic;
+            font-size: 15px;
+            font-weight: 300;
+            letter-spacing: 0.03em;
+            color: #5a6a5a;
+            margin-bottom: 32px;
+        }
+
+        .card-description {
+            font-family: var(--sans);
+            font-size: 14px;
+            font-weight: 300;
+            line-height: 1.9;
+            letter-spacing: 0.03em;
+            color: #3a3a36;
+            margin-bottom: 28px;
+            text-transform: lowercase;
+        }
+
+        .card-features {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .card-features li {
+            font-family: var(--sans);
+            font-size: 13px;
+            font-weight: 300;
+            line-height: 1.6;
+            letter-spacing: 0.02em;
+            color: #2a2a26;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .card-features li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #6a7a6a;
+        }
+
+        /* ========== SCROLL SECTIONS CONTAINER ========== */
+        #scroll-sections {
+            background: var(--cream);
+        }
+
+        /* ========== SYSTEM / SECTION 6 ========== */
+        .screen {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: opacity 0.6s ease;
+        }
+
+        .screen.hidden {
+            display: none;
+        }
+
+        .screen-1 {
+            background: var(--dark-bg);
+            color: #e8e4db;
+        }
+
+        .screen-2 {
+            background-image: url('assets/use-case-bg.png');
+            background-size: cover;
+            background-position: center;
+            color: #1a1a18;
+        }
+
+        .screen-2::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(244, 242, 237, 0.25);
+            pointer-events: none;
+        }
+
+        .screen-content {
+            max-width: 900px;
+            width: 90%;
+            text-align: center;
+            z-index: 1;
+            position: relative;
+        }
+
+        .screen-title {
+            font-size: clamp(56px, 7vw, 110px);
+            font-weight: 300;
+            line-height: 1.1;
+            letter-spacing: 0.01em;
+            margin-bottom: 40px;
+        }
+
+        .desc-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 48px;
+            margin-top: 80px;
+        }
+
+        .desc-item {
+            text-align: center;
+        }
+
+        .desc-label {
+            font-family: var(--sans);
+            font-size: 10px;
+            font-weight: 300;
+            letter-spacing: 0.15em;
+            text-transform: lowercase;
+            margin-bottom: 12px;
+            opacity: 0.6;
+        }
+
+        .screen-1 .desc-label { color: #8a9e8a; }
+        .screen-2 .desc-label { color: #4E5E54; }
+
+        .desc-text {
+            font-family: var(--sans);
+            font-size: 14px;
+            font-weight: 300;
+            line-height: 1.8;
+            letter-spacing: 0.05em;
+            text-transform: lowercase;
+        }
+
+        .screen-1 .desc-text { color: #c8c4bc; }
+        .screen-2 .desc-text { color: #3A3F3B; }
+
+        .nav-hint {
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: var(--sans);
+            font-size: 10px;
+            font-weight: 300;
+            letter-spacing: 0.15em;
+            text-transform: lowercase;
+            opacity: 0.5;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-hint:hover { opacity: 0.8; }
+        .screen-1 .nav-hint { color: #8a9e8a; }
+        .screen-2 .nav-hint { color: #4E5E54; }
+
+        /* ========== FOOTER SECTION ========== */
+        .footer-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 60px;
+            background: linear-gradient(to bottom, var(--cream) 0%, #e8e4db 100%);
+            position: relative;
+        }
+
+        .footer-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg width="100%25" height="100%25" xmlns="http://www.w3.org/2000/svg"><line x1="50%25" y1="0" x2="50%25" y2="100" stroke="%23B8C4B8" stroke-width="0.5" opacity="0.3"/><circle cx="50%25" cy="100" r="3" fill="%23B8C4B8" opacity="0.3"/></svg>');
+            background-repeat: no-repeat;
+            background-position: top center;
+            pointer-events: none;
+        }
+
+        .footer-container {
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .headline {
+            font-size: clamp(48px, 6vw, 84px);
+            font-weight: 300;
+            line-height: 1.15;
+            letter-spacing: 0.01em;
+            color: var(--ink);
+            margin-bottom: 32px;
+        }
+
+        .headline em {
+            font-style: italic;
+            color: var(--earth-green);
+        }
+
+        .subheadline {
+            font-size: clamp(18px, 2vw, 24px);
+            font-weight: 300;
+            line-height: 1.6;
+            letter-spacing: 0.02em;
+            color: var(--charcoal);
+            margin-bottom: 64px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer-cta-container {
+            margin-bottom: 80px;
+        }
+
+        .footer-divider {
+            width: 60px;
+            height: 1px;
+            background: var(--pale-sage);
+            margin: 0 auto 64px;
+        }
+
+        .footer-note {
+            font-family: var(--sans);
+            font-size: 12px;
+            font-weight: 300;
+            line-height: 1.9;
+            letter-spacing: 0.08em;
+            color: var(--gray);
+            margin-bottom: 48px;
+            text-transform: lowercase;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+
+        .copyright {
+            font-family: var(--sans);
+            font-size: 9px;
+            font-weight: 300;
+            letter-spacing: 0.15em;
+            color: var(--gray);
+            opacity: 0.6;
+            text-transform: lowercase;
+        }
+
+        /* ========== MODAL STYLES ========== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(32, 36, 32, 0.6);
+            z-index: 100;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.open {
+            display: flex;
+            animation: modalFadeIn 0.3s ease forwards;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .modal-card {
+            background: #edeae2;
+            border: 0.5px solid #c8c4bc;
+            padding: 28px 26px 22px;
+            width: 90%;
+            max-width: 340px;
+            position: relative;
+            animation: slideUp 0.4s ease forwards;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-eyebrow {
+            font-family: var(--sans);
+            letter-spacing: 0.13em;
+            font-size: 8px;
+            text-transform: lowercase;
+            color: #7a8a7c;
+        }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .status-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--earth-green);
+            display: inline-block;
+        }
+
+        .modal-title {
+            font-weight: 300;
+            font-size: 28px;
+            line-height: 1.15;
+            letter-spacing: 0.01em;
+            color: #1c1c1a;
+            margin-bottom: 10px;
+        }
+
+        .modal-description {
+            font-family: var(--sans);
+            color: #7a7a74;
+            font-size: 8.5px;
+            line-height: 1.8;
+            letter-spacing: 0.1em;
+            margin-bottom: 22px;
+            text-transform: lowercase;
+        }
+
+        .form-field {
+            margin-bottom: 12px;
+        }
+
+        .form-label {
+            font-family: var(--sans);
+            color: #7a8a7c;
+            font-size: 7.5px;
+            margin-bottom: 5px;
+            letter-spacing: 0.13em;
+            text-transform: lowercase;
+        }
+
+        .form-input {
+            width: 100%;
+            background: #e4e0d8;
+            border: 0.5px solid #c1ccc2;
+            border-radius: 0;
+            padding: 9px 11px;
+            font-family: var(--serif);
+            font-size: 13px;
+            color: #2a2a26;
+            letter-spacing: 0.05em;
+            outline: none;
+        }
+
+        .form-input::placeholder { color: #9a9790; }
+
+        select.form-input {
+            appearance: none;
+            background-image: none;
+            cursor: pointer;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+
+        .select-wrapper {
+            position: relative;
+        }
+
+        .select-arrow {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 8px;
+            color: #7a8a7c;
+            pointer-events: none;
+        }
+
+        .modal-submit {
+            width: 100%;
+            background: var(--earth-green);
+            border: none;
+            color: #c1ccc2;
+            font-family: var(--sans);
+            letter-spacing: 0.2em;
+            font-size: 9px;
+            padding: 13px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-transform: lowercase;
+            transition: background 0.2s ease;
+        }
+
+        .modal-submit:hover { background: #3d5451; }
+
+        .modal-footer-note {
+            text-align: center;
+            color: #9a9790;
+            font-family: var(--sans);
+            font-size: 7.5px;
+            margin-top: 12px;
+            font-style: italic;
+            letter-spacing: 0.08em;
+            text-transform: lowercase;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 13px;
+            right: 15px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 15px;
+            color: #9a9790;
+            line-height: 1;
+            transition: color 0.2s ease;
+        }
+
+        .close-btn:hover { color: #2a2a26; }
+
+        /* ========== TYPOGRAPHIC HIERARCHY — defined last to win cascade ========== */
+        .font-primary {
+            font-family: 'IvyJournal', 'EB Garamond', serif !important;
+            font-weight: 300 !important;
+            letter-spacing: 0.12em !important;
+            line-height: 1.1 !important;
+        }
+
+        .font-secondary {
+            font-family: 'IvyJournal', 'EB Garamond', serif !important;
+            font-weight: 300 !important;
+            letter-spacing: 0.10em !important;
+            line-height: 1.2 !important;
+        }
+
+        .font-tertiary {
+            font-family: 'Apercu', 'Inter', sans-serif !important;
+            font-weight: 300 !important;
+            letter-spacing: 0.02em !important;
+            line-height: 1.5 !important;
+        }
+
+        .punctuation-adjust {
+            letter-spacing: -0.05em !important;
+        }
+
+        /* ========== RESPONSIVE ========== */
+
+        /* Remove tap highlight and 300ms delay on all interactive elements */
+        button, .tab, .nav-hint, .close-btn, .cta-button, .modal-submit {
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* iOS Safari: fixed backgrounds cause blank areas — use scroll on mobile */
+        @supports (-webkit-touch-callout: none) {
+            .use-cases-section,
+            .screen-2 {
+                background-attachment: scroll;
+            }
+        }
+
+        /* ===== TABLET 768px ===== */
+        @media (max-width: 768px) {
+            .hero-right {
+                display: none;
+            }
+
+            .logo-container {
+                padding: 20px 24px;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                padding: 0 24px 60px;
+            }
+
+            .hero-left {
+                max-width: 100%;
+            }
+
+            h1 {
+                font-size: 56px;
+            }
+
+            .cta-button {
+                min-height: 44px;
+                padding: 12px 40px;
+            }
+
+            .what-section {
+                padding: 80px 24px;
+                min-height: unset;
+            }
+
+            .what-container {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .definition {
+                padding-left: 20px;
+                font-size: clamp(18px, 4vw, 28px);
+            }
+
+            .key-stats {
+                gap: 20px;
+            }
+
+            .stat-value {
+                font-size: 32px;
+            }
+
+            .use-cases-section {
+                padding: 60px 24px;
+                background-attachment: scroll;
+            }
+
+            .use-cases-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .header-section {
+                position: relative;
+                top: 0;
+            }
+
+            .tabs {
+                gap: 16px;
+                flex-wrap: wrap;
+                margin-top: 32px;
+            }
+
+            .tab {
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                padding: 8px 4px;
+            }
+
+            .use-case-card {
+                padding: 32px 24px;
+            }
+
+            .card-title {
+                font-size: 34px;
+            }
+
+            .card-number {
+                font-size: 52px;
+                margin-bottom: 16px;
+            }
+
+            .screen-2 {
+                background-attachment: scroll;
+            }
+
+            .screen-content {
+                width: 92%;
+            }
+
+            .desc-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+                margin-top: 48px;
+            }
+
+            .nav-hint {
+                bottom: 32px;
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .footer-section {
+                padding: 60px 24px;
+                min-height: unset;
+            }
+
+            .footer-cta-container {
+                margin-bottom: 48px;
+            }
+
+            .info-title {
+                font-size: 22px;
+            }
+
+            .info-description {
+                font-size: 14px;
+            }
+
+            .right-content {
+                gap: 40px;
+            }
+
+            .left-content {
+                gap: 36px;
+            }
+        }
+
+        /* ===== MOBILE 480px ===== */
+        @media (max-width: 480px) {
+            .logo-container {
+                padding: 16px 20px;
+            }
+
+            h1 {
+                font-size: 44px;
+                line-height: 1.15;
+            }
+
+            .hero-content {
+                padding: 0 20px 48px;
+            }
+
+            .eyebrow {
+                font-size: 10px;
+                margin-bottom: 16px;
+            }
+
+            .divider {
+                margin-bottom: 32px;
+            }
+
+            .definition {
+                font-size: 18px;
+                padding-left: 16px;
+            }
+
+            .key-stats {
+                gap: 12px;
+                margin-top: 24px;
+                padding-top: 24px;
+            }
+
+            .stat-value {
+                font-size: 26px;
+            }
+
+            .stat-label {
+                font-size: 10px;
+            }
+
+            .what-section {
+                padding: 48px 20px;
+            }
+
+            .left-content {
+                gap: 24px;
+            }
+
+            .use-cases-section {
+                padding: 40px 20px;
+            }
+
+            .use-case-card {
+                padding: 20px 16px;
+            }
+
+            .card-title {
+                font-size: 26px;
+            }
+
+            .card-number {
+                font-size: 36px;
+                margin-bottom: 12px;
+            }
+
+            .card-subtitle {
+                font-size: 13px;
+            }
+
+            .card-description {
+                font-size: 13px;
+            }
+
+            .card-features li {
+                font-size: 12px;
+            }
+
+            .info-title {
+                font-size: 19px;
+            }
+
+            .info-description {
+                font-size: 13px;
+            }
+
+            .screen-content {
+                width: 94%;
+            }
+
+            .desc-text {
+                font-size: 13px;
+            }
+
+            .desc-label {
+                font-size: 9px;
+            }
+
+            .footer-section {
+                padding: 40px 20px;
+            }
+
+            .footer-note {
+                font-size: 11px;
+            }
+
+            .subheadline {
+                font-size: clamp(15px, 4vw, 20px);
+                margin-bottom: 40px;
+            }
+
+            .modal-card {
+                padding: 24px 20px 20px;
+            }
+
+            .modal-title {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== HERO SECTION ========== -->
+    <div class="hero">
+        <div class="logo-container">
+            <img src="assets/logo-new.png" alt="phasicon." style="height:100px;width:auto;object-fit:contain;max-width:260px;">
+        </div>
+
+        <div class="hero-content">
+            <div class="hero-left">
+                <h1 class="font-primary">ambient<br>guardship.</h1>
+                <div class="cta-container">
+                    <button class="cta-button font-tertiary" onclick="openModal()">join the waitlist</button>
+                    <div class="subtext font-tertiary">silent monitoring. early protection. waitlist only.</div>
+                </div>
+            </div>
+            <div class="hero-right"></div>
+        </div>
+    </div>
+
+    <!-- ========== WHAT IS PHASICON SECTION ========== -->
+    <div class="what-section">
+        <div class="what-container">
+            <div class="left-content">
+                <div class="eyebrow font-tertiary">— what is phasicon</div>
+                <h1 class="main-title font-primary">the world's first AI-powered human lifestyle pattern recognition system.</h1>
+                <div class="definition font-secondary">
+                    <em>phasicon</em> is your preventative doctor. silent, always observing, built to catch what traditional healthcare misses.
+                </div>
+                <div class="key-stats">
+                    <div class="stat">
+                        <div class="stat-value font-secondary">24/7</div>
+                        <div class="stat-label font-tertiary">continuous monitoring</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value font-secondary">100%</div>
+                        <div class="stat-label font-tertiary">local processing</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value font-secondary">1-6</div>
+                        <div class="stat-label font-tertiary">family members</div>
+                    </div>
+                </div>
+            </div>
+            <div class="right-content">
+                <div class="info-block">
+                    <div class="info-label font-tertiary">our vision</div>
+                    <h2 class="info-title font-secondary">extend human life.<br>improve the quality of life we're given.</h2>
+                    <div class="info-divider"></div>
+                    <p class="info-description font-tertiary">
+                        we are building an ecosystem that enables the extension of human life and improves the quality of the life we're given. health isn't something you track. it's something you live. phasicon makes prevention automatic.
+                    </p>
+                </div>
+                <div class="info-block">
+                    <div class="info-label font-tertiary">how it works</div>
+                    <h2 class="info-title font-secondary">pattern recognition meets prevention.</h2>
+                    <div class="info-divider"></div>
+                    <p class="info-description font-tertiary">
+                        phasicon learns your baseline over weeks — sleep, movement, stress, recovery. it connects daily behaviours to long-term health outcomes. when something shifts, you're alerted early. no apps. no manual tracking. just ambient intelligence working for you.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== WHO IT'S FOR / SECTION 7 ========== -->
+    <div class="use-cases-section" id="use-cases-section">
+        <div class="use-cases-container">
+            <div class="header-section">
+                <div class="eyebrow font-tertiary">— who it's for</div>
+                <h1 class="main-title font-primary">built for three ambient settings.</h1>
+                <div class="tabs">
+                    <div class="tab active" onclick="showUseCase(0)">at home</div>
+                    <div class="tab" onclick="showUseCase(1)">gym &amp; sports</div>
+                    <div class="tab" onclick="showUseCase(2)">workplace</div>
+                </div>
+            </div>
+            <div class="content-section">
+                <div class="use-case-card active" id="card-0">
+                    <div class="card-number font-secondary">01</div>
+                    <div class="card-label font-tertiary">residential / at home</div>
+                    <h2 class="card-title font-secondary">residential.</h2>
+                    <p class="card-subtitle font-secondary">the all-concerned doctor for each family.</p>
+                    <p class="card-description font-tertiary">phasicon runs quietly in the background of your home, monitoring every family member's health without interruption. it catches the slow drip that runs into something serious and surfaces them only when it matters.</p>
+                    <ul class="card-features font-tertiary">
+                        <li>Continuous biometric monitoring for 1-6 family members</li>
+                        <li>Sleep quality and recovery-related events</li>
+                        <li>Early detection of physiological stress signals</li>
+                        <li>No separate device per person</li>
+                    </ul>
+                </div>
+                <div class="use-case-card" id="card-1">
+                    <div class="card-number font-secondary">02</div>
+                    <div class="card-label font-tertiary">gym &amp; sports / in motion</div>
+                    <h2 class="card-title font-secondary">in motion.</h2>
+                    <p class="card-subtitle font-secondary">a movement guide for every athlete.</p>
+                    <p class="card-description font-tertiary">a discreet layer of tech that never tires tracking fatigue, form, recovery, rest, and exertion in real-time — not to replace your coach, but to ensure nothing goes unnoticed between sessions.</p>
+                    <ul class="card-features font-tertiary">
+                        <li>Posture &amp; gait analysis via vision pods</li>
+                        <li>Real-time alerting and recovery scoring</li>
+                        <li>Overtraining risk signals, surfaced early</li>
+                        <li>Integration with gym-floor environments</li>
+                    </ul>
+                </div>
+                <div class="use-case-card" id="card-2">
+                    <div class="card-number font-secondary">03</div>
+                    <div class="card-label font-tertiary">corporate / at work</div>
+                    <h2 class="card-title font-secondary">at work.</h2>
+                    <p class="card-subtitle font-secondary">a wellness layer for modern companies.</p>
+                    <p class="card-description font-tertiary">a standing concern for employee health and productivity — surfacing the patterns that HR dashboards don't reach and individuals don't notice on their own.</p>
+                    <ul class="card-features font-tertiary">
+                        <li>Workplace stress &amp; fatigue pattern analysis</li>
+                        <li>Aggregate wellness insights for teams</li>
+                        <li>Individual data remains private by architecture</li>
+                        <li>No wearable visible on employees — patch only</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== SCROLL SECTIONS (2-5) ========== -->
+    <div id="scroll-sections"></div>
+
+    <!-- ========== THE SYSTEM / SECTION 6 ========== -->
+    <div class="screen screen-1" id="screen1">
+        <div class="screen-content">
+            <div class="eyebrow font-tertiary">the complete system</div>
+            <h1 class="screen-title font-primary">everything works together.</h1>
+            <div class="desc-grid">
+                <div class="desc-item">
+                    <div class="desc-label font-tertiary">patch</div>
+                    <div class="desc-text font-tertiary">continuous biosignal tracking worn on your body</div>
+                </div>
+                <div class="desc-item">
+                    <div class="desc-label font-tertiary">vision pod</div>
+                    <div class="desc-text font-tertiary">contextual awareness through privacy-first observation</div>
+                </div>
+                <div class="desc-item">
+                    <div class="desc-label font-tertiary">compute unit</div>
+                    <div class="desc-text font-tertiary">local edge processing that connects it all</div>
+                </div>
+            </div>
+        </div>
+        <div class="nav-hint font-tertiary" onclick="nextScreen()">tap to continue →</div>
+    </div>
+
+    <div class="screen screen-2 hidden" id="screen2">
+        <div class="screen-content">
+            <div class="eyebrow font-tertiary">ambient intelligence</div>
+            <h1 class="screen-title font-primary">health happens in context.</h1>
+            <div class="desc-grid">
+                <div class="desc-item">
+                    <div class="desc-label font-tertiary">always learning</div>
+                    <div class="desc-text font-tertiary">patterns emerge over weeks, not hours. the system learns your baseline.</div>
+                </div>
+                <div class="desc-item">
+                    <div class="desc-label font-tertiary">silent operation</div>
+                    <div class="desc-text font-tertiary">no apps to check. no data to input. it runs in the background of your life.</div>
+                </div>
+                <div class="desc-item">
+                    <div class="desc-label font-tertiary">private by design</div>
+                    <div class="desc-text font-tertiary">everything processed locally. your data never leaves your home.</div>
+                </div>
+            </div>
+        </div>
+        <div class="nav-hint font-tertiary" onclick="prevScreen()">← back</div>
+    </div>
+
+    <!-- ========== FOOTER / WAITLIST SECTION ========== -->
+    <div class="footer-section">
+        <div class="footer-container">
+            <div class="eyebrow font-tertiary">— be among the first</div>
+            <h1 class="headline font-primary">health has a <em>new address.</em></h1>
+            <p class="subheadline font-tertiary">
+                join the waitlist and be notified when phasicon becomes available.
+            </p>
+            <div class="footer-cta-container">
+                <button class="cta-button font-tertiary" onclick="openModal()">join the waitlist</button>
+            </div>
+            <div class="footer-divider"></div>
+            <p class="footer-note font-tertiary">
+                silent monitoring. early protection. waitlist only.<br>
+                we'll keep you posted. quietly.
+            </p>
+            <div class="footer-logo">
+                <img src="assets/logo-new.png" alt="phasicon." style="height:120px;width:auto;object-fit:contain;opacity:0;animation:fadeInCard 0.8s ease 0.3s forwards;">
+            </div>
+            <div class="copyright">© 2026 phasicon. all rights reserved.</div>
+        </div>
+    </div>
+
+    <!-- ========== WAITLIST MODAL ========== -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+        <div class="modal-card" onclick="event.stopPropagation()">
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+            <div class="modal-header">
+                <span class="modal-eyebrow">waitlist / early access</span>
+                <span class="status-indicator">
+                    <span class="status-dot"></span>
+                    <span class="modal-eyebrow" style="color: var(--earth-green);">open</span>
+                </span>
+            </div>
+            <h2 class="modal-title font-secondary">stay updated as<br>the system evolves.</h2>
+            <p class="modal-description font-tertiary">let us know you're here and we'll keep you updated.</p>
+            <form onsubmit="handleSubmit(event)">
+                <div class="form-field">
+                    <p class="form-label">full name</p>
+                    <input type="text" class="form-input" placeholder="your name" required/>
+                </div>
+                <div class="form-field">
+                    <p class="form-label">email address</p>
+                    <input type="email" class="form-input" placeholder="you@somewhere.com" required/>
+                </div>
+                <div class="form-row">
+                    <div>
+                        <p class="form-label">region</p>
+                        <div class="select-wrapper">
+                            <select class="form-input" required>
+                                <option value="">select —</option>
+                                <option value="india">india</option>
+                                <option value="uae">uae</option>
+                                <option value="us">united states</option>
+                                <option value="other">other</option>
+                            </select>
+                            <span class="select-arrow">∨</span>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="form-label">use case</p>
+                        <div class="select-wrapper">
+                            <select class="form-input" required>
+                                <option value="">select —</option>
+                                <option value="residential">residential</option>
+                                <option value="gym">gym / sports</option>
+                                <option value="office">office wellness</option>
+                                <option value="other">other</option>
+                            </select>
+                            <span class="select-arrow">∨</span>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="modal-submit">✓ &nbsp; join the waitlist</button>
+            </form>
+            <p class="modal-footer-note">we'll keep you posted. quietly.</p>
+        </div>
+    </div>
+
+    <!-- ========== SCRIPTS ========== -->
+    <script>
+        // Create root divs for scroll sections
+        const scrollSections = document.getElementById('scroll-sections');
+        scrollSections.innerHTML = `
+            <div id="section-2-root"></div>
+            <div id="section-3-root"></div>
+            <div id="section-4-root"></div>
+            
+        `;
+    </script>
+
+    <!-- Section 2: Where does health happen -->
+    <script type="text/babel">
+const { useState: useState2, useEffect: useEffect2, useRef: useRef2 } = React;
+
+function useSP2(ref) {
+  const [p, setP] = useState2(0);
+  useEffect2(() => {
+    let raf;
+    const calc = () => {
+      if (!ref.current) return;
+      const r = ref.current.getBoundingClientRect();
+      const tot = ref.current.offsetHeight - innerHeight;
+      setP(Math.max(0, Math.min(1, -r.top / tot)));
+    };
+    const sc = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => { raf = null; calc(); });
+    };
+    calc();
+    window.addEventListener('scroll', sc, { passive: true });
+    window.addEventListener('resize', calc, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', sc);
+      window.removeEventListener('resize', calc);
+    };
+  }, [ref]);
+  return p;
+}
+
+const rm2 = (v, a, b) => Math.max(0, Math.min(1, (v - a) / (b - a)));
+
+function Section2() {
+  const ref = useRef2(null);
+  const p = useSP2(ref);
+  const [activeStep, setActiveStep] = useState2(1);
+  const [windowWidth, setWindowWidth] = useState2(window.innerWidth);
+
+  useEffect2(() => {
+    const handler = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handler, { passive: true });
+    return () => window.removeEventListener('resize', handler);
+  }, []);
+
+  const isMobile = windowWidth <= 768;
+
+  const introOp = p < .20 ? rm2(p, 0, .01) : Math.max(0, 1 - rm2(p, .01, .26));
+  const houseOp = rm2(p, .20, .32);
+  const pathLen = rm2(p, .20, .46);
+  const houseSlide = rm2(p, .50, .65);
+  const pointersOp = rm2(p, .65, .75);
+
+  useEffect2(() => {
+    if (p <= 0.75) setActiveStep(0);
+    else if (p > 0.75 && p <= 0.83) setActiveStep(1);
+    else if (p > 0.83 && p <= 0.91) setActiveStep(2);
+    else if (p > 0.91) setActiveStep(3);
+  }, [p]);
+
+  const D = 1400;
+
+  const beats = [
+    {
+      num: '01',
+      title: 'the home holds everyone.',
+      body: 'you do not live life alone. you live it with your loved ones. every meal, every late night, every pattern shared between people (families, partners, the rhythms of a household) - all of it happens here.',
+      icon: React.createElement('g', {},
+        React.createElement('circle', { cx: 75, cy: 135, r: 5, fill: 'none', stroke: '#4d6661', strokeWidth: 0.8 }),
+        React.createElement('circle', { cx: 95, cy: 128, r: 4, fill: 'none', stroke: '#4d6661', strokeWidth: 0.8 }),
+        React.createElement('circle', { cx: 115, cy: 133, r: 5, fill: 'none', stroke: '#4d6661', strokeWidth: 0.8 }),
+        React.createElement('circle', { cx: 135, cy: 127, r: 4, fill: 'none', stroke: '#4d6661', strokeWidth: 0.8 }),
+        React.createElement('line', { x1: 75, y1: 135, x2: 95, y2: 128, stroke: '#c1ccc2', strokeWidth: 0.6 }),
+        React.createElement('line', { x1: 95, y1: 128, x2: 115, y2: 133, stroke: '#c1ccc2', strokeWidth: 0.6 }),
+        React.createElement('line', { x1: 115, y1: 133, x2: 135, y2: 127, stroke: '#c1ccc2', strokeWidth: 0.6 })
+      )
+    },
+    {
+      num: '02',
+      title: 'pattern recognition is the key',
+      body: 'the couch after dinner. the screen before bed. the cortisol spike at 10pm. the sunday pattern repeated for twenty years. phasicon finds what nobody thought to measure and shows you what it means.',
+      icon: React.createElement('g', {},
+        React.createElement('path', {
+          d: 'M 58 155 Q 68 140 78 155 Q 88 170 98 148 Q 108 126 118 148 Q 128 170 138 155 Q 148 140 158 155',
+          fill: 'none', stroke: '#4d6661', strokeWidth: 1, strokeLinecap: 'round'
+        })
+      )
+    },
+    {
+      num: '03',
+      title: '80% of your life happens at home',
+      body: 'phasicon is built where the problem lives. every other health device follows you outside and ignores the place that matters most. we are the first system built for where health is actually made or lost.',
+      icon: React.createElement('g', {},
+        React.createElement('circle', { cx: 110, cy: 150, r: 18, fill: 'none', stroke: '#4d6661', strokeWidth: 0.7 }),
+        React.createElement('circle', { cx: 110, cy: 150, r: 11, fill: 'none', stroke: '#c1ccc2', strokeWidth: 0.5 }),
+        React.createElement('circle', { cx: 110, cy: 150, r: 4, fill: '#4d6661', opacity: 0.3 }),
+        React.createElement('line', { x1: 110, y1: 132, x2: 110, y2: 126, stroke: '#4d6661', strokeWidth: 0.6 }),
+        React.createElement('line', { x1: 128, y1: 150, x2: 134, y2: 150, stroke: '#4d6661', strokeWidth: 0.6 }),
+        React.createElement('line', { x1: 110, y1: 168, x2: 110, y2: 174, stroke: '#4d6661', strokeWidth: 0.6 }),
+        React.createElement('line', { x1: 92, y1: 150, x2: 86, y2: 150, stroke: '#4d6661', strokeWidth: 0.6 })
+      )
+    }
+  ];
+
+  const centerX = 0;
+  const leftX = -100;
+  const houseX = isMobile ? 0 : centerX + (leftX - centerX) * houseSlide;
+  const svgSize = isMobile ? 220 : 340;
+  const activeBeat = activeStep > 0 ? beats[activeStep - 1] : null;
+
+  return React.createElement('div', {
+    ref: ref,
+    style: {
+      position: 'relative',
+      height: '400vh',
+      background: 'url("assets/fabric-texture.png") center/cover no-repeat',
+      backgroundAttachment: isMobile ? 'scroll' : 'fixed'
+    }
+  },
+    React.createElement('div', {
+      style: { position: 'absolute', inset: 0, background: 'rgba(244, 242, 237, 0.15)', pointerEvents: 'none' }
+    }),
+    React.createElement('div', {
+      style: {
+        position: 'sticky', top: 0, height: '100vh',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        overflow: 'hidden'
+      }
+    },
+      introOp > .01 && React.createElement('div', {
+        style: {
+          fontWeight: 300, fontStyle: 'italic',
+          fontSize: 'clamp(22px, 3.2vw, 48px)',
+          color: 'var(--ink)', letterSpacing: '.08em',
+          textAlign: 'center', position: 'absolute',
+          maxWidth: '90%', opacity: introOp, padding: '0 24px'
+        }
+      }, 'where does health actually happen?'),
+      houseOp > .01 && React.createElement('div', {
+        style: { position: 'relative', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }
+      },
+        React.createElement('div', {
+          style: {
+            position: 'absolute', left: '50%', top: isMobile ? '28%' : '50%',
+            transform: `translate(calc(-50% + ${houseX}%), -50%)`,
+            opacity: houseOp,
+            transition: 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
+          }
+        },
+          React.createElement('svg', { width: svgSize, height: svgSize, viewBox: '0 0 400 400' },
+            React.createElement('path', {
+              d: 'M 80 210 L 200 100 L 320 210 L 320 350 L 80 350 Z M 155 290 L 155 350 L 205 350 L 205 290 Z M 238 155 L 238 205 L 282 205 L 282 155 Z',
+              stroke: 'var(--ink)', strokeWidth: 1.2, fill: 'none',
+              strokeDasharray: D, strokeDashoffset: D * (1 - pathLen)
+            }),
+            pathLen > 0.95 && beats.map((beat, idx) =>
+              React.createElement('g', {
+                key: idx,
+                style: { opacity: activeStep >= idx + 1 ? 1 : 0, transition: 'opacity 0.6s ease' }
+              }, beat.icon)
+            )
+          )
+        ),
+        !isMobile && pointersOp > .01 && React.createElement('div', {
+          style: {
+            position: 'absolute', right: '5%', top: '50%',
+            transform: 'translateY(-50%)',
+            width: '52%', maxWidth: '650px',
+            opacity: pointersOp
+          }
+        },
+          beats.map((beat, idx) =>
+            React.createElement('div', {
+              key: idx,
+              style: {
+                padding: '32px 0',
+                borderBottom: idx < beats.length - 1 ? '0.5px solid #d4d0c8' : 'none',
+                opacity: activeStep >= idx + 1 ? 1 : 0.25,
+                transition: 'opacity 0.5s ease'
+              }
+            },
+              React.createElement('div', {
+                style: { display: 'flex', alignItems: 'baseline', gap: '20px', marginBottom: '16px' }
+              },
+                React.createElement('span', {
+                  style: { fontFamily: 'var(--sans)', fontSize: '11px', letterSpacing: '0.2em', color: activeStep >= idx + 1 ? 'var(--ink)' : '#c8c4bc', transition: 'color 0.5s ease', textTransform: 'lowercase' }
+                }, beat.num),
+                React.createElement('h3', {
+                  style: { fontWeight: 300, letterSpacing: '0.02em', lineHeight: 1.2, color: activeStep >= idx + 1 ? 'var(--ink)' : '#c8c4bc', transition: 'color 0.5s ease', fontSize: '36px' }
+                }, beat.title)
+              ),
+              React.createElement('p', {
+                style: { fontFamily: 'var(--sans)', color: 'rgb(26, 26, 24)', fontSize: '14px', lineHeight: 1.9, letterSpacing: '0.08em', textTransform: 'lowercase' }
+              }, beat.body)
+            )
+          )
+        ),
+        isMobile && pointersOp > .01 && activeBeat && React.createElement('div', {
+          style: {
+            position: 'absolute', bottom: '8%', left: '20px', right: '20px',
+            background: 'rgba(244, 242, 237, 0.94)',
+            borderLeft: '2px solid var(--pale-sage)',
+            padding: '18px 20px',
+            opacity: pointersOp,
+            transition: 'opacity 0.5s ease'
+          }
+        },
+          React.createElement('div', {
+            style: { display: 'flex', alignItems: 'baseline', gap: '14px', marginBottom: '8px' }
+          },
+            React.createElement('span', {
+              style: { fontFamily: 'var(--sans)', fontSize: '10px', letterSpacing: '0.2em', color: 'var(--ink)', textTransform: 'lowercase' }
+            }, activeBeat.num),
+            React.createElement('h3', {
+              style: { fontWeight: 300, fontSize: '20px', lineHeight: 1.2, color: 'var(--ink)' }
+            }, activeBeat.title)
+          ),
+          React.createElement('p', {
+            style: { fontFamily: 'var(--sans)', color: 'rgb(26,26,24)', fontSize: '13px', lineHeight: 1.8, letterSpacing: '0.05em', textTransform: 'lowercase' }
+          }, activeBeat.body)
+        )
+      )
+    )
+  );
+}
+
+if (document.getElementById('section-2-root')) {
+  ReactDOM.createRoot(document.getElementById('section-2-root')).render(React.createElement(Section2));
+}
+    </script>
+
+    <!-- Section 3: Timeline / Invisible -->
+    <script type="text/babel">
+const { useState: useState3, useEffect: useEffect3, useRef: useRef3 } = React;
+
+function useSP3(ref) {
+  const [p, setP] = useState3(0);
+  useEffect3(() => {
+    let raf;
+    const calc = () => {
+      if (!ref.current) return;
+      const r = ref.current.getBoundingClientRect();
+      const tot = ref.current.offsetHeight - innerHeight;
+      setP(Math.max(0, Math.min(1, -r.top / tot)));
+    };
+    const sc = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => { raf = null; calc(); });
+    };
+    calc();
+    window.addEventListener('scroll', sc, { passive: true });
+    window.addEventListener('resize', calc, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', sc);
+      window.removeEventListener('resize', calc);
+    };
+  }, [ref]);
+  return p;
+}
+
+const rm3 = (v, a, b) => Math.max(0, Math.min(1, (v - a) / (b - a)));
+
+function Section3() {
+  const ref = useRef3(null);
+  const p = useSP3(ref);
+
+  const imgOp = 1;
+  const lblOp = rm3(p, .20, .32);
+  const lineOp = rm3(p, .28, .55);
+  const tkOp = rm3(p, .45, .58);
+  const wdOp = rm3(p, .70, .82);
+  const subOp = rm3(p, .87, .99);
+
+  return React.createElement('div', {
+    ref: ref,
+    style: { position: 'relative', height: '350vh' }
+  },
+    React.createElement('div', {
+      style: { position: 'sticky', top: 0, height: '100vh', overflow: 'hidden' }
+    },
+      React.createElement('img', {
+        src: 'assets/scene2c-landscape.png',
+        style: {
+          position: 'absolute', inset: 0,
+          width: '100%', height: '100%',
+          objectFit: 'cover', opacity: imgOp
+        },
+        alt: ''
+      }),
+      React.createElement('div', {
+        style: {
+          position: 'absolute', inset: 0,
+          background: 'rgba(255, 255, 255, 0.08)'
+        }
+      }),
+      React.createElement('div', {
+        style: {
+          position: 'absolute', inset: 0,
+          display: 'flex', flexDirection: 'column',
+          alignItems: 'center', justifyContent: 'center'
+        }
+      },
+        lblOp > .01 && React.createElement(React.Fragment, null,
+          React.createElement('div', {
+            style: {
+              fontWeight: 300, fontStyle: 'italic', fontSize: '22px',
+              color: '#2a2a26', letterSpacing: '0.15em',
+              position: 'absolute', textTransform: 'lowercase',
+              opacity: lblOp, top: '22%', left: '13%'
+            }
+          }, 'a sunday habit'),
+          React.createElement('div', {
+            style: {
+              fontWeight: 300, fontStyle: 'italic', fontSize: '22px',
+              color: '#2a2a26', letterSpacing: '0.15em',
+              position: 'absolute', textTransform: 'lowercase',
+              opacity: lblOp, top: '22%', right: '13%'
+            }
+          }, 'diagnosis')
+        ),
+        lineOp > .01 && React.createElement('div', {
+          style: {
+            width: '80%', maxWidth: '900px', height: '2px',
+            background: 'rgba(42, 42, 38, 0.5)',
+            position: 'relative', marginTop: '100px', opacity: lineOp
+          }
+        },
+          tkOp > .01 && [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(yr =>
+            React.createElement('div', {
+              key: yr,
+              style: {
+                position: 'absolute', width: '2px', height: '16px',
+                background: '#3a3a36', top: '-7px',
+                left: `${yr * 9}%`, opacity: tkOp
+              }
+            },
+              React.createElement('div', {
+                style: {
+                  position: 'absolute', top: '22px', left: '50%',
+                  transform: 'translateX(-50%)',
+                  fontSize: '13px', color: '#3a3a36',
+                  whiteSpace: 'nowrap', fontFamily: 'var(--sans)',
+                  letterSpacing: '0.05em'
+                }
+              }, `yr ${yr}`)
+            )
+          )
+        ),
+        
+wdOp > .01 && React.createElement('div', {
+  style: {
+    fontWeight: 300, fontSize: 'clamp(56px, 7vw, 110px)',
+    color: '#1a1a18', marginTop: '80px', marginBottom: '40px',
+    letterSpacing: '0.02em', opacity: wdOp
+  }
+}, 'made visible.'),
+subOp > .01 && React.createElement('div', {
+  style: {
+    fontFamily: 'var(--sans)',
+    fontSize: '20px',
+    fontWeight: 300,
+    lineHeight: 1.5,
+    letterSpacing: '0.05em',
+    color: '#2a2a26',
+    textAlign: 'center',
+    textTransform: 'lowercase',
+    opacity: subOp,
+    marginTop: '-40px'
+  }
+},
+  React.createElement(React.Fragment, null,
+    'we connect the habit to the outcome',
+    React.createElement('br'),
+    'years before anyone else would'
+  )
+),
+      )
+    )
+  );
+}
+
+if (document.getElementById('section-3-root')) {
+  ReactDOM.createRoot(document.getElementById('section-3-root')).render(React.createElement(Section3));
+}
+    </script>
+
+    <!-- Section 4: Patch Slideshow -->
+    <script type="text/babel">
+const { useState: useState4, useEffect: useEffect4, useRef: useRef4 } = React;
+
+function useSP4(ref) {
+  const [p, setP] = useState4(0);
+  useEffect4(() => {
+    let raf;
+    const calc = () => {
+      if (!ref.current) return;
+      const r = ref.current.getBoundingClientRect();
+      const tot = ref.current.offsetHeight - innerHeight;
+      setP(Math.max(0, Math.min(1, -r.top / tot)));
+    };
+    const sc = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => { raf = null; calc(); });
+    };
+    calc();
+    window.addEventListener('scroll', sc, { passive: true });
+    window.addEventListener('resize', calc, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', sc);
+      window.removeEventListener('resize', calc);
+    };
+  }, [ref]);
+  return p;
+}
+
+const rm4 = (v, a, b) => Math.max(0, Math.min(1, (v - a) / (b - a)));
+
+function Section4() {
+  const ref = useRef4(null);
+  const p = useSP4(ref);
+  const [windowWidth, setWindowWidth] = useState4(window.innerWidth);
+  const [mobileSlide, setMobileSlide] = useState4(0);
+  const touchStartX = useRef4(null);
+  const touchStartY = useRef4(null);
+
+  useEffect4(() => {
+    const handler = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handler, { passive: true });
+    return () => window.removeEventListener('resize', handler);
+  }, []);
+
+  const slides = [
+    {
+      image: 'assets/patch-1.jpeg',
+      eyebrow: 'the patch',
+      title: 'silent. continuous. unobtrusive.',
+      description: 'a thin wearable patch that tracks your body signals 24/7'
+    },
+    {
+      image: 'assets/vision-pod.png',
+      eyebrow: 'vision pod',
+      title: 'sees without watching.',
+      description: 'advanced biosensors capture heart rate variability, temperature, movement patterns, and stress markers. the data flows to your home hub, building a complete picture of your health over time.'
+    },
+    {
+      image: 'assets/compute-unit.png',
+      eyebrow: 'compute unit',
+      title: 'the brain of the system ',
+      description: 'medical-grade accuracy in a design so comfortable you forget you are wearing it. waterproof, flexible, and designed to move with you through every moment of your day.'
+    }
+  ];
+
+  const isMobile = windowWidth <= 768;
+
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
+  };
+  const handleTouchEnd = (e) => {
+    if (touchStartX.current === null) return;
+    const dx = e.changedTouches[0].clientX - touchStartX.current;
+    const dy = Math.abs(e.changedTouches[0].clientY - touchStartY.current);
+    if (Math.abs(dx) > 40 && Math.abs(dx) > dy) {
+      if (dx < 0) setMobileSlide(s => Math.min(slides.length - 1, s + 1));
+      else setMobileSlide(s => Math.max(0, s - 1));
+    }
+    touchStartX.current = null;
+  };
+
+  if (isMobile) {
+    const slide = slides[mobileSlide];
+    return React.createElement('div', {
+      style: { background: 'var(--cream)', padding: '56px 20px 44px', overflowX: 'hidden', touchAction: 'pan-y' },
+      onTouchStart: handleTouchStart,
+      onTouchEnd: handleTouchEnd
+    },
+      React.createElement('div', { style: { display: 'flex', justifyContent: 'center', marginBottom: '28px' } },
+        React.createElement('img', {
+          src: slide.image, alt: slide.title,
+          style: { width: '100%', maxWidth: '300px', height: 'auto', maxHeight: '42vh', objectFit: 'contain', borderRadius: '8px' }
+        })
+      ),
+      React.createElement('div', { style: { display: 'flex', flexDirection: 'column', gap: '14px' } },
+        React.createElement('div', {
+          style: { fontFamily: 'var(--sans)', fontSize: '11px', fontWeight: 300, letterSpacing: '0.2em', color: 'var(--earth-green)', textTransform: 'lowercase' }
+        }, slide.eyebrow),
+        React.createElement('h2', {
+          style: { fontSize: 'clamp(28px, 7.5vw, 44px)', fontWeight: 300, lineHeight: 1.15, letterSpacing: '0.01em', color: 'var(--ink)' }
+        }, slide.title),
+        React.createElement('p', {
+          style: { fontFamily: 'var(--sans)', fontSize: '14px', fontWeight: 300, lineHeight: 1.85, letterSpacing: '0.04em', color: 'var(--charcoal)', textTransform: 'lowercase' }
+        }, slide.description)
+      ),
+      React.createElement('div', { style: { display: 'flex', gap: '4px', justifyContent: 'center', marginTop: '28px' } },
+        slides.map((_, idx) =>
+          React.createElement('button', {
+            key: idx,
+            onClick: () => setMobileSlide(idx),
+            'aria-label': 'slide ' + (idx + 1),
+            style: { width: '44px', height: '44px', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 0, touchAction: 'manipulation' }
+          },
+            React.createElement('div', {
+              style: { width: '8px', height: '8px', borderRadius: '50%', background: mobileSlide === idx ? 'var(--earth-green)' : 'var(--pale-sage)', opacity: mobileSlide === idx ? 1 : 0.35, transition: 'all 0.3s ease' }
+            })
+          )
+        )
+      )
+    );
+  }
+
+  // Desktop: scroll-driven animation
+  let activeSlide = 0;
+  if (p > 0.33 && p <= 0.66) activeSlide = 1;
+  else if (p > 0.66) activeSlide = 2;
+
+  const slide1Op = p <= 0.33 ? 1 : Math.max(0, 1 - rm4(p, 0.33, 0.40));
+  const slide2Op = p > 0.25 && p <= 0.66 ? rm4(p, 0.25, 0.33) : p > 0.66 ? Math.max(0, 1 - rm4(p, 0.66, 0.73)) : 0;
+  const slide3Op = p > 0.60 ? rm4(p, 0.60, 0.66) : 0;
+  const opacities = [slide1Op, slide2Op, slide3Op];
+
+  return React.createElement('div', {
+    ref: ref,
+    style: { position: 'relative', height: '450vh', background: 'var(--cream)' }
+  },
+    React.createElement('div', {
+      style: { position: 'sticky', top: 0, height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }
+    },
+      slides.map((slide, idx) =>
+        React.createElement('div', {
+          key: idx,
+          style: { position: 'absolute', width: '90%', maxWidth: '1400px', display: 'flex', alignItems: 'center', gap: '80px', opacity: opacities[idx], pointerEvents: activeSlide === idx ? 'auto' : 'none', transition: 'opacity 0.6s ease' }
+        },
+          React.createElement('div', { style: { flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' } },
+            React.createElement('img', { src: slide.image, alt: slide.title, style: { width: '100%', height: 'auto', maxHeight: '85vh', objectFit: 'contain', borderRadius: '8px' } })
+          ),
+          React.createElement('div', { style: { flex: 1, display: 'flex', flexDirection: 'column', gap: '24px' } },
+            React.createElement('div', { style: { fontFamily: 'var(--sans)', fontSize: '11px', fontWeight: 300, letterSpacing: '0.2em', color: 'var(--earth-green)', textTransform: 'lowercase' } }, slide.eyebrow),
+            React.createElement('h2', { style: { fontSize: 'clamp(42px, 5vw, 72px)', fontWeight: 300, lineHeight: 1.1, letterSpacing: '0.01em', color: 'var(--ink)' } }, slide.title),
+            React.createElement('p', { style: { fontFamily: 'var(--sans)', fontSize: '15px', fontWeight: 300, lineHeight: 1.9, letterSpacing: '0.05em', color: 'var(--charcoal)', maxWidth: '520px', textTransform: 'lowercase' } }, slide.description)
+          )
+        )
+      ),
+      React.createElement('div', {
+        style: { position: 'absolute', bottom: '60px', left: '50%', transform: 'translateX(-50%)', display: 'flex', gap: '12px', zIndex: 10 }
+      },
+        slides.map((_, idx) =>
+          React.createElement('div', { key: idx, style: { width: '8px', height: '8px', borderRadius: '50%', background: activeSlide === idx ? 'var(--earth-green)' : 'var(--pale-sage)', opacity: activeSlide === idx ? 1 : 0.3, transition: 'opacity 0.3s ease' } })
+        )
+      )
+    )
+  );
+}
+
+if (document.getElementById('section-4-root')) {
+  ReactDOM.createRoot(document.getElementById('section-4-root')).render(React.createElement(Section4));
+}
+    </script>
+
+
+
+    <script>
+        // Use case tabs
+        function showUseCase(index) {
+            document.querySelectorAll('.tab').forEach((tab, i) => {
+                tab.classList.toggle('active', i === index);
+            });
+            document.querySelectorAll('.use-case-card').forEach((card, i) => {
+                card.classList.toggle('active', i === index);
+            });
+        }
+
+        // System screens navigation
+        let currentScreen = 1;
+        function nextScreen() {
+            if (currentScreen === 1) {
+                document.getElementById('screen1').classList.add('hidden');
+                document.getElementById('screen2').classList.remove('hidden');
+                currentScreen = 2;
+            }
+        }
+        function prevScreen() {
+            if (currentScreen === 2) {
+                document.getElementById('screen2').classList.add('hidden');
+                document.getElementById('screen1').classList.remove('hidden');
+                currentScreen = 1;
+            }
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') nextScreen();
+            else if (e.key === 'ArrowLeft') prevScreen();
+        });
+
+        // Touch swipe for system screens
+        let screenTouchX = null;
+        ['screen1', 'screen2'].forEach(id => {
+            const el = document.getElementById(id);
+            el.addEventListener('touchstart', (e) => { screenTouchX = e.touches[0].clientX; }, { passive: true });
+            el.addEventListener('touchend', (e) => {
+                if (screenTouchX === null) return;
+                const dx = e.changedTouches[0].clientX - screenTouchX;
+                if (dx < -50) nextScreen();
+                else if (dx > 50) prevScreen();
+                screenTouchX = null;
+            }, { passive: true });
+        });
+
+        // Modal
+        function openModal() {
+            document.getElementById('modalOverlay').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeModal(event) {
+            if (event && event.target !== document.getElementById('modalOverlay')) return;
+            document.getElementById('modalOverlay').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert('Thank you for joining the waitlist!');
+            document.getElementById('modalOverlay').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.getElementById('modalOverlay').classList.remove('open');
+                document.body.style.overflow = '';
+            }
+        });
+    </script>
+</body>
+</html>
